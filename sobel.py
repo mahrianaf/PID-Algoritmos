@@ -16,6 +16,8 @@ def Sobel(img):
     Gx= np.zeros(9, dtype=np.int32)
     Gy= np.zeros(9, dtype=np.int32)
 
+    px_min = px_max = 0
+
     for i in range( n_linhas-1):
         for j in range( n_colunas-1):
 
@@ -65,12 +67,13 @@ def Sobel(img):
             
             img_filtro[i, j] = math.sqrt(soma_Gx**2 + soma_Gy**2)
 
-    # Normalização
-    maior_valor = img_filtro.max()
-    if maior_valor > 0:
-        img_final = (img_filtro / maior_valor * 255).astype(np.uint8)
-    else:
-        img_final = img_filtro.astype(np.uint8)
+            if px_max < img_filtro[i, j]:
+                px_max = img_filtro[i, j]
+
+            if px_min > img_filtro[i, j]:
+                px_min = img_filtro[i, j]
+
+    img_final = normalizacao(px_max, px_min, img_filtro)
 
     images = [img, img_final]
     titles = ['Imagem Original', 'Filtro Sobel']
@@ -81,6 +84,17 @@ def Sobel(img):
         plt.title(titles[i])
 
     plt.show()
+
+
+def normalizacao(px_max, px_min, img):
+    n_linhas, n_colunas = img.shape
+
+    for i in range( n_linhas):
+        for j in range( n_colunas):
+            img[i,j] = ((img[i,j] - px_min)/(px_max - px_min) * 255)
+
+    return img
+
 
 # Observacao: Gx e Gy foram definidos como int (aceitam numeros positivos e negativos)
 # porem, durante a multiplicacao de numeros negativos com as variaveis pixels, estava dando um erro

@@ -28,7 +28,7 @@ while True:
     opcao = input("Opção: ")
 
     if opcao == "1":
-        caminho = input()
+        caminho = input("Imagem: ")
         img = cv.imread(caminho, cv.IMREAD_GRAYSCALE)
         assert img is  not  None , "ERRO: Leitura do Arquivo."
 
