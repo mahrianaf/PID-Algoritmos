@@ -7,21 +7,25 @@ import matplotlib.pyplot as plt
 import cv2 as cv
 
 def Negativo(img):
-    imagem_negativa = np.zeros_like(img)
-    dimensao = img.shape
+    # Verifica se a imagem é colorida e converte para escala de cinza
+    if len(img.shape) == 3:
+        img_cinza = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+    else:
+        img_cinza = img.copy()
+
+    n_linhas, n_colunas = img_cinza.shape
+    imagem_negativa = np.zeros_like(img_cinza)
     L = 256 # número de níveis de cinza (0-255 ou 8 bits)
 
-    #escala de cinza apenas
-    n_linhas, n_colunas = dimensao
-        
     for i in range(n_linhas):
         for j in range(n_colunas):
-            r = img[i, j]
+            r = img_cinza[i, j]
             s = L - 1 - r # subtrai o valor do pixel do número de níveis de cinza
             imagem_negativa[i, j] = s #atribui o valor negativo ao pixel correspondente na imagem de saída
 
-    images = [img, imagem_negativa]
-    titles = ['Imagem Original', 'Imagem Negativa']
+    #Printa
+    images = [img_cinza, imagem_negativa]
+    titles = ['Original (Cinza)', 'Imagem Negativa']
 
     for i in range(2):
         plt.subplot(1, 2, i+1)
