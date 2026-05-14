@@ -16,9 +16,6 @@ def Histograma(img):
         for j in range (n_colunas):
             h[img[i, j]] += 1
 
-    plt.plot(h)
-    plt.show()
-
     return h
 
 

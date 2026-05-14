@@ -27,9 +27,9 @@ def PassaBaixa(img):
                 pixel_abaixo_esq = img[i+1,j-1]
                 pixel_acima_esq = img[i-1, j-1]
             
-            soma = pixel_central + pixel_abaixo + pixel_direita 
-            + pixel_abaixo_dir + pixel_acima + pixel_acima_dir 
-            + pixel_esquerda + pixel_abaixo_esq + pixel_acima_esq
+            soma = int(pixel_central) + int(pixel_abaixo) + int(pixel_direita) 
+            + int(pixel_abaixo_dir) + int(pixel_acima) + int(pixel_acima_dir) 
+            + int(pixel_esquerda) + int(pixel_abaixo_esq) + int(pixel_acima_esq)
 
             nova_intensidade = soma/9
             img_filtro[i,j] = nova_intensidade
