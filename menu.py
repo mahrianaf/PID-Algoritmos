@@ -4,6 +4,9 @@ import equalizacao as eq
 import escala_de_cinza as ec
 import passa_baixa_media as pb
 import passa_alta_basico as pa
+import Negativo as ng
+import Transf_logaritimica as tl
+import Passa_baixa_g as pbg
 import sobel as sb
 import cv2 as cv
 
@@ -11,19 +14,22 @@ import cv2 as cv
 #Imagem 2: ./assets/jurassic-park.jpg
 
 while True:
-    print(" _________________________ ")
-    print("|       ALGORITMOS        |")
-    print("|                         |")
-    print("| [1] Carregar Imagem     |")
-    print("| [2] Threshold           |")
-    print("| [3] Histograma          |")
-    print("| [4] Equalização         |")
-    print("| [5] Escala de Cinza     |")
-    print("| [6] Passa Baixa - Média |")
-    print("| [7] Passa Alta - Básico |")
-    print("| [8] Passa Alta - Sobel  |")
-    print("| [0] Encerrar            |")
-    print("|_________________________|\n")
+    print(" ______________________________")
+    print("|       ALGORITMOS             |")
+    print("|                              |")
+    print("| [1] Carregar Imagem          |")
+    print("| [2] Threshold                |")
+    print("| [3] Histograma               |")
+    print("| [4] Equalização              |")
+    print("| [5] Escala de Cinza          |")
+    print("| [6] Passa Baixa - Média      |")
+    print("| [7] Passa Alta - Básico      |")
+    print("| [8] Passa Alta - Sobel       |")
+    print("| [9] Transf. Logarítmica      |")
+    print("| [10] Negativo                |")
+    print("| [11] Passa Baixa - Gaussiano |")
+    print("| [0] Encerrar                 |")
+    print("|______________________________|\n")
 
     opcao = input("Opção: ")
 
@@ -53,6 +59,12 @@ while True:
     elif opcao == "8":
         sb.Sobel(img)
         
+    elif opcao == "9":
+        tl.TransformacaoLogaritmica(img)
+
+    elif opcao == "10":
+        ng.Negativo(img)
+
     elif opcao == "0":
         print("Encerrado!")
         break
