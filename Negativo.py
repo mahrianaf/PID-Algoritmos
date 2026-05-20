@@ -25,7 +25,7 @@ def Negativo(img):
 
     #Printa
     images = [img_cinza, imagem_negativa]
-    titles = ['Original (Cinza)', 'Imagem Negativa']
+    titles = ['Imagem Original', 'Imagem Negativa']
 
     for i in range(2):
         plt.subplot(1, 2, i+1)

@@ -61,7 +61,7 @@ def PassaBaixaGaussiano(img):
     img_filtro = np.uint8(img_filtro)
 
     images = [img_cinza, img_filtro]
-    titles = ['Original (Cinza)', 'Filtro Gaussiano (Suavizada)']
+    titles = ['Imagem Original', 'Filtro Gaussiano (Suavizada)']
 
     for i in range(2):
         plt.subplot(1, 2, i+1)
